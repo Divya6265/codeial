@@ -75,6 +75,8 @@ app.use(flash());
 app.use(flashMware.flashmessg);
 
 
+// codeial/uploads
+app.use("/uploads", express.static(__dirname + "/uploads"))
 app.use("/",require("./routes"));
 
 

@@ -1,5 +1,6 @@
 const users = require("../models/userSchema");
-
+const fs = require("fs");
+const path = require("path");
 const passport = require("passport");
 
 
@@ -103,21 +104,47 @@ module.exports.update = (req, res) => {
    if(req.user.id == req.params.id){
     console.log("Updated in if...")
 
-    users.findByIdAndUpdate(req.params.id, {
-        name : req.body.name,
-        email : req.body.email
-    })
-    .then((user) => {
-       console.log("Updated...", user)
-       req.flash("success", "Updated details successfuly")
+//     users.findByIdAndUpdate(req.params.id, {
+//         name : req.body.name,
+//         email : req.body.email
+//     })
+//     .then((user) => {
+//        console.log("Updated...", user)
+//        req.flash("success", "Updated details successfuly")
 
-       return res.redirect("back");
+//        return res.redirect("back");
+//     })
+//    }else{
+//        req.flash("error", "Update failure");
+//        return res.redirect("back");
+//    }
+
+    users.findById(req.params.id)
+    .then(user => {
+            users.uploadedAvatar(req, res, (err) => {
+                if(err){
+                    return console.log("**** Multer Error", err);
+                }
+                user.name = req.body.name;
+                user.email = req.body.email;
+                if(req.file){
+
+                    if(user.avatar && fs.existsSync(path.join(__dirname, "..", user.avatar))){
+                        fs.unlinkSync(path.join(__dirname, "..", user.avatar));
+                    }
+                    user.avatar = users.avatarPath + "/" + req.file.filename
+                    console.log("File...")
+                    // filename is a diskstorage option
+                }
+                user.save();
+                return res.redirect("back");
+            })
     })
-   }else{
-       req.flash("error", "Update failure");
-       return res.redirect("back");
+    .catch(err => {
+        console.log("***** Update error ", err);
+        return res.redirect("back");
+    })
    }
-
 }
 module.exports.signOut = (req, res, next) => {
      req.logout( err =>{
