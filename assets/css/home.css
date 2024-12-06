@@ -1,0 +1,26 @@
+.home_page {
+  display: flex;
+  padding: 40px;
+}
+
+.user_posts {
+  width: 75%;
+  border-right: 1px solid lightgray;
+}
+
+.user_posts .post-comments li {
+  list-style-type: circle;
+}
+
+.user_profiles {
+  width: 25%;
+  padding-left: 10px;
+}
+
+.user_profiles li {
+  list-style-type: none;
+}
+
+.user_profiles li a {
+  color: black;
+}

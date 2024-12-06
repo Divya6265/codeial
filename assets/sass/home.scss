@@ -1,0 +1,22 @@
+.home_page{
+    display: flex;
+    padding: 40px;
+}
+
+.user_posts{
+    width: 75%;
+    border-right: 1px solid lightgray;
+    .post-comments li{
+        list-style-type: circle;
+    }
+}
+.user_profiles{
+    width: 25%;
+    padding-left: 10px;
+    li{
+        list-style-type: none;
+        a{
+            color: black;
+        }
+    }
+}
