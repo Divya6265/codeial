@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body h1 {
+  font-size: 50px;
+}
+
+body ul {
+  list-style: none;
+}
+
+body a {
+  color: blueviolet;
+  text-decoration: none;
+}

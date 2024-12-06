@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="/css/home.css">
+
+    <div class="home_page">
+        <section class="user_posts">
+            <h3>Posts</h3>
+            <% if(locals.user){ %>
+                <section class="feet-posts">
+                    <form action="/posts/create-post" class="new-post-form" method="post">
+                        <textarea name="content" placeholder="Post" cols="30" rows="3" required></textarea>
+                        <input type="submit" value="Post">
+                    </form>
+                </section>
+            <%}%>
+        
+                   <ul>
+                    <% for( post of Posts) { %>
+                    
+                        <%- include("_posts") -%>
+        
+                        <div class="post-comments">
+                            <%- include("_comments") -%>
+                        </div>
+        
+                    <% } %>
+                   </ul>
+            </section>
+            <section class="user_profiles">
+                <h3>Friends</h3>
+                <%for(u of all_users) {%>
+                    <%if(!(locals.user == u.id)) {%>
+                        <li>
+                            <a href="/user/profile/<%= u.id%>"><%=u.name%></a>
+                        </li>    
+                    <%}%>
+                    
+                <%}%>
+            </section>  
+    </div>    
+

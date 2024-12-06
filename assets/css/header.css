@@ -1,0 +1,24 @@
+header {
+  background-color: #4b82f9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  color: #fff;
+  padding: 0 15px;
+}
+
+header h3 {
+  font-size: 25px;
+}
+
+header ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+header ul a {
+  color: #fff;
+  text-decoration: none;
+}

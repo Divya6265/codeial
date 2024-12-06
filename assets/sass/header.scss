@@ -1,0 +1,22 @@
+header{
+    background-color: #4b82f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    color: #fff;
+    padding: 0 15px;
+    h3{
+        font-size: 25px;
+    }
+    ul{
+        list-style: none;
+        display: flex;
+        gap: 20px;
+
+        a{
+            color: #fff;
+            text-decoration: none;
+        }
+    }
+}
