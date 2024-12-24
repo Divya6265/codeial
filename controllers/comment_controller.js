@@ -1,5 +1,6 @@
 const Post = require("../models/postSchema");
 const Comment = require("../models/commentSchema");
+const commentMailer = require("../mailer/comments_mailer");
 
 module.exports.createComment = (req, res) => {
     console.log(req.body);
@@ -14,6 +15,7 @@ module.exports.createComment = (req, res) => {
                     .then(comment => {
                         post.comments.push(comment);
                         post.save();
+                        commentMailer.newComment(comment);
                         console.log("Comment Added...");
                         req.flash("success","comment added..!");
                         return res.redirect("back");

@@ -54,3 +54,4 @@ module.exports.destroy = (req, res) => {
 
     return res.redirect("back");
 }
+
